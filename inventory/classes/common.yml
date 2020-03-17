@@ -6,3 +6,8 @@ parameters:
         output_type: plain
         input_paths:
           - components/nginx
+  nginx:
+    - hostname: "localhost"
+      html_root: "/usr/share/nginx/html"
+      website_path: "manifests/html"
+      nginx_file: "manifests/default.conf"

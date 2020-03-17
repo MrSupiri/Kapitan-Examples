@@ -5,14 +5,10 @@ parameters:
   kapitan:
     vars:
       target: "prod"
-  common:
+  nginx:
     - port: 80
       enable_charset: true
       env: "prod"
-      website_path: "manifests/html"
-      nginx_file: "manifests/default.conf"
-      html_root: "/usr/share/nginx/html"
-      hostname: "localhost"
       access_log: true
       server_errors:
         - status_code: 500

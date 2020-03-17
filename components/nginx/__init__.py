@@ -9,20 +9,23 @@ inventory = kadet.inventory()
 def main():
     path = os.path.dirname(__file__) + "/../../templates"
     output = kadet.BaseObj()
-    for variables in inventory.parameters.common:
-        nginx_conf = jinja2_render_file([path], "nginx.conf", json.dumps(variables))
-        output.root["manifests/default.conf"] = nginx_conf
 
-        index_html = jinja2_render_file([path], "index.html", json.dumps(variables))
-        output.root["manifests/html/index.html"] = index_html
-        
-        start_script = jinja2_render_file([path], "scripts/script.sh", json.dumps(variables))
-        output.root["run.sh"] = start_script
+    variables = {k: v for d in inventory.parameters.nginx for k, v in d.items()}
+    
+    nginx_conf = jinja2_render_file([path], "nginx.conf", json.dumps(variables))
+    output.root["manifests/default.conf"] = nginx_conf
 
-        readme = jinja2_render_file([path], "docs/README.md", json.dumps(variables))
-        output.root["README.md"] = readme
+    index_html = jinja2_render_file([path], "index.html", json.dumps(variables))
+    output.root["manifests/html/index.html"] = index_html
+    
+    start_script = jinja2_render_file([path], "scripts/script.sh", json.dumps(variables))
+    output.root["run.sh"] = start_script
 
-        for error in variables.server_errors:
+    readme = jinja2_render_file([path], "docs/README.md", json.dumps(variables))
+    output.root["README.md"] = readme
+
+    if "server_errors" in variables.keys():
+        for error in variables["server_errors"]:
             error_page = jinja2_render_file([path], "error.html", json.dumps(error))
             output.root[f"manifests/html/{error.status_code}.html"] = error_page
         
