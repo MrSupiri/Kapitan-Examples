@@ -1,0 +1,23 @@
+classes:
+  - common
+
+parameters:
+  kapitan:
+    vars:
+      target: "prod"
+  common:
+    - port: 80
+      enable_charset: true
+      env: "prod"
+      website_path: "manifests/html"
+      nginx_file: "manifests/default.conf"
+      html_root: "/usr/share/nginx/html"
+      hostname: "localhost"
+      access_log: true
+      server_errors:
+        - status_code: 500
+          message: "Something is wrong with our server check back in a bit"
+        - status_code: 401
+          message: "You ain't supposed access this page go away !!!"
+        - status_code: 404
+          message: "Sorry, I couldn't find what you are looking for"

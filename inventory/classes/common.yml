@@ -1,0 +1,8 @@
+parameters:
+  kapitan:
+    compile:
+      - output_path: "./"
+        input_type: kadet
+        output_type: plain
+        input_paths:
+          - components/nginx

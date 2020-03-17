@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory of prod</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+</head>
+
+<body>
+    <div class="container has-text-centered">
+        <h1 class="title" style="margin-top: 60px;">Inventory of prod</h1>
+        <h2 class="subtitle" style="margin-top: 30px; margin-bottom: 10px;">Nginx Config</h2>
+        <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: auto;">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>hostname</td>
+                    <td>localhost</td>
+                </tr>
+                <tr>
+                    <td>port</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>enable_charset</td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td>html_root</td>
+                    <td>/usr/share/nginx/html</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="subtitle" style="margin-top: 30px; margin-bottom: 10px;">Start Script Variable</h2>
+        <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: auto;">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>website_path</td>
+                    <td>manifests/html</td>
+                </tr>
+                <tr>
+                    <td>nginx_file</td>
+                    <td>manifests/default.conf</td>
+                </tr>
+                <tr>
+                    <td>env</td>
+                    <td>prod</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="subtitle" style="margin-top: 30px; margin-bottom: 10px;">HTTP Error Message</h2>
+        <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: auto;">
+            <thead>
+                <tr>
+                    <th>HTTP Status Code</th>
+                    <th>Message</th>
+                    <th>Page</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>500</td>
+                    <td>Something is wrong with our server check back in a bit</td>
+                    <td><a href="error-500">500.html</a></td>
+                </tr>
+                <tr>
+                    <td>401</td>
+                    <td>You ain't supposed access this page go away !!!</td>
+                    <td><a href="error-401">401.html</a></td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>Sorry, I couldn't find what you are looking for</td>
+                    <td><a href="error-404">404.html</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

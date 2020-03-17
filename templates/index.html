@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory of {{env}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+</head>
+
+<body>
+    <div class="container has-text-centered">
+        <h1 class="title" style="margin-top: 60px;">Inventory of {{env}}</h1>
+        <h2 class="subtitle" style="margin-top: 30px; margin-bottom: 10px;">Nginx Config</h2>
+        <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: auto;">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>hostname</td>
+                    <td>{{hostname}}</td>
+                </tr>
+                <tr>
+                    <td>port</td>
+                    <td>{{port}}</td>
+                </tr>
+                <tr>
+                    <td>enable_charset</td>
+                    <td>{{enable_charset}}</td>
+                </tr>
+                <tr>
+                    <td>html_root</td>
+                    <td>{{html_root}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="subtitle" style="margin-top: 30px; margin-bottom: 10px;">Start Script Variable</h2>
+        <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: auto;">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>website_path</td>
+                    <td>{{website_path}}</td>
+                </tr>
+                <tr>
+                    <td>nginx_file</td>
+                    <td>{{nginx_file}}</td>
+                </tr>
+                <tr>
+                    <td>env</td>
+                    <td>{{env}}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% if server_errors is defined %}
+        <h2 class="subtitle" style="margin-top: 30px; margin-bottom: 10px;">HTTP Error Message</h2>
+        <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: auto;">
+            <thead>
+                <tr>
+                    <th>HTTP Status Code</th>
+                    <th>Message</th>
+                    <th>Page</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for error in server_errors %}
+                <tr>
+                    <td>{{error.status_code}}</td>
+                    <td>{{error.message}}</td>
+                    <td><a href="error-{{error.status_code}}">{{error.status_code}}.html</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</body>
+
+</html>

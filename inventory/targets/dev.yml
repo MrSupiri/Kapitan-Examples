@@ -1,0 +1,15 @@
+classes:
+  - common
+
+parameters:
+  kapitan:
+    vars:
+      target: "dev"
+  common:
+    - port: 8081
+      enable_charset: false
+      env: "dev"
+      website_path: "manifests/html"
+      nginx_file: "manifests/default.conf"
+      html_root: "/usr/share/nginx/html"
+      hostname: "localhost"
